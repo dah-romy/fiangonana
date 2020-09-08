@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html class="no-js css-menubar" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="bootstrap admin template">
+    <meta name="author" content="">
+    
+    {% block title %}
+        <title>Dashboard | Remark Admin Template</title>
+    {% endblock %}
+
+    {% include "back/common/style.html.twig" %}
+  </head>
+  <body class="animsition site-navbar-small dashboard">
+        {% include "back/common/navbar.html.twig" %}
+        {% include "back/common/left-sidebar.html.twig" %}
+
+      <div class="page">
+        <div class="page-content container-fluid">
+            {% block body %}
+            {% endblock %}
+        </div>
+      </div>
+
+      {% include "back/common/footer.html.twig" %}
+      {% include "back/common/script.html.twig" %}
+  </body>
+</html>
