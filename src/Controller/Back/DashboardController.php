@@ -15,6 +15,10 @@ class DashboardController extends AbstractController
      * @Route("/", name="admin.index")
      */
     public function dashboard(){
+        if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            return $this->redirectToRoute('app.login');
+        }
+        
         return $this->render("back/dashboard/index.html.twig");
     }
 }
