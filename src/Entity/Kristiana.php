@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=KristianaRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Kristiana
 {
@@ -20,7 +21,7 @@ class Kristiana
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=8)
+     * @ORM\Column(type="string", length=8, nullable=true)
      */
     private $kaody;
 
@@ -89,11 +90,12 @@ class Kristiana
         return $this->kaody;
     }
 
-    public function setKaody(string $kaody): self
+    /**
+    * @ORM\PrePersist
+    */
+    public function setKaody()
     {
-        $this->kaody = $kaody;
-
-        return $this;
+        $this->kaody = $this->getSokajy()."-".$this->getId();
     }
 
     public function getAnarana(): ?string
