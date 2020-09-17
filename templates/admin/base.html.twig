@@ -14,8 +14,10 @@
     {% include "admin/common/style.html.twig" %}
   </head>
   <body class="animsition site-navbar-small dashboard mm-wrapper site-menubar-unfold">
-        {% include "admin/common/navbar.html.twig" %}
-        {% include "admin/common/left-sidebar.html.twig" %}
+      {% include "admin/common/navbar.html.twig" %}
+      
+      {% block sidebar %}
+      {% endblock %}
 
       <div class="page">    
         {% include "admin/common/breadcrumbs.html.twig" with {title:title} %}

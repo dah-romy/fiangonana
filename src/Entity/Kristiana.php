@@ -71,13 +71,14 @@ class Kristiana
     private $maty;
 
     /**
-     * @ORM\OneToMany(targetEntity=Mpikambana::class, mappedBy="kristiana")
+     * @ORM\Column(type="text", nullable=true)
      */
-    private $mpikambanas;
+    private $adiresy;
 
     public function __construct()
     {
         $this->mpikambanas = new ArrayCollection();
+        $this->adidys = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -206,34 +207,16 @@ class Kristiana
         return $this;
     }
 
-    /**
-     * @return Collection|Mpikambana[]
-     */
-    public function getMpikambanas(): Collection
+    public function getAdiresy(): ?string
     {
-        return $this->mpikambanas;
+        return $this->adiresy;
     }
 
-    public function addMpikambana(Mpikambana $mpikambana): self
+    public function setAdiresy(?string $adiresy): self
     {
-        if (!$this->mpikambanas->contains($mpikambana)) {
-            $this->mpikambanas[] = $mpikambana;
-            $mpikambana->setKristiana($this);
-        }
+        $this->adiresy = $adiresy;
 
         return $this;
     }
 
-    public function removeMpikambana(Mpikambana $mpikambana): self
-    {
-        if ($this->mpikambanas->contains($mpikambana)) {
-            $this->mpikambanas->removeElement($mpikambana);
-            // set the owning side to null (unless already changed)
-            if ($mpikambana->getKristiana() === $this) {
-                $mpikambana->setKristiana(null);
-            }
-        }
-
-        return $this;
-    }
 }

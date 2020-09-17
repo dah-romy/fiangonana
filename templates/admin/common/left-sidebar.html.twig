@@ -1,30 +1,30 @@
 <div class="site-menubar">
     <ul class="site-menu">
-        <li class="site-menu-item has-sub">
+        <li class="site-menu-item has-sub {% if active == "statistika" %} active open {% endif %} ">
             <a href="{{(path('admin.index'))}}">
                 <i class="site-menu-icon wb-dashboard" aria-hidden="true"></i>
                 <span class="site-menu-title">Statistika</span>
             </a>
         </li>
-        <li class="site-menu-item has-sub">
+        <li class="site-menu-item has-sub {% if active == "kristiana" %} active open {% endif %}">
             <a href="javascript:void(0)">
                 <i class="site-menu-icon wb-layout" aria-hidden="true"></i>
                 <span class="site-menu-title">Kristiana</span>
                 <span class="site-menu-arrow"></span>
             </a>
             <ul class="site-menu-sub">
-                <li class="site-menu-item has-sub">
+                <li class="site-menu-item has-sub {% if active == "kristiana" %} active open {% endif %}">
                     <a href="javascript:void(0)">
                         <span class="site-menu-title">Mikasika ny kristiana</span>
                         <span class="site-menu-arrow"></span>
                     </a>
                     <ul class="site-menu-sub">
-                        <li class="site-menu-item">
+                        <li class="site-menu-item {% if _active == "tsy-mpandray" %} active {% endif %}">
                             <a class="animsition-link" href="{{path("kristiana.tsy-mpandray")}}">
                                 <span class="site-menu-title">Lisitry ny tsy mpandray</span>
                             </a>
                         </li>
-                        <li class="site-menu-item">
+                        <li class="site-menu-item {% if _active == "mpandray" %} active open {% endif %}">
                             <a class="animsition-link" href="{{path("kristiana.mpandray")}}">
                                 <span class="site-menu-title">Lisitry ny mpandray</span>
                             </a>

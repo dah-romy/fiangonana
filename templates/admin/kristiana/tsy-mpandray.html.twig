@@ -4,6 +4,10 @@
 <title>Kristiana | FJKM Betela Marobiby</title>
 {% endblock %}
 
+{% block sidebar %}
+    {% include "admin/common/left-sidebar.html.twig" with { active: "kristiana", _active: 'tsy-mpandray' } %}
+{% endblock %}
+
 {% block body %}
 <div class="panel panel-bordered">
     <div class="panel-heading">

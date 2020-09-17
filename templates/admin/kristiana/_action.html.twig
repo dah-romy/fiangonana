@@ -4,6 +4,14 @@
 <title>Kristiana | FJKM Betela Marobiby</title>
 {% endblock %}
 
+{% block sidebar %}
+    {% if app.request.get('page') == "mpandray" %}
+        {% include "admin/common/left-sidebar.html.twig" with { active: "kristiana", _active: 'mpandray' } %}
+    {% else %}
+        {% include "admin/common/left-sidebar.html.twig" with { active: "kristiana", _active: 'tsy-mpandray' } %}
+    {% endif %}
+{% endblock %}
+
 {% block body %}
 <div class="panel panel-bordered">
     <div class="panel-heading">
@@ -80,6 +88,16 @@
                 {{form_widget(form.asa,{'attr':{
                     'class': "form-control",
                     'placeholder': 'Asa',
+                    'autocomplete': "off"
+                }})}}
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label">Adiresy: </label>
+            <div class="col-md-9">
+                {{form_widget(form.adiresy,{'attr':{
+                    'class': "form-control",
+                    'placeholder': 'Adiresy',
                     'autocomplete': "off"
                 }})}}
             </div>

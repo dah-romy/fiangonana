@@ -4,5 +4,9 @@
     <title>Statistika | FJKM Betela Marobiby</title>
 {% endblock %}
 
+{% block sidebar %}
+    {% include "admin/common/left-sidebar.html.twig" with { active: "statistika", _active: null } %}
+{% endblock %}
+
 {% block body %}
 {% endblock %}

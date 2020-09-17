@@ -2,12 +2,11 @@
 
 namespace App\Controller\Admin;
 
+use App\Utils\Utils;
 use App\Entity\Kristiana;
 use App\Form\KristianaType;
-use App\Utils\Utils;
 use App\Repository\KristianaRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\ORM\Mapping\Entity;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -184,8 +183,7 @@ class KristianaController extends AbstractController
     /**
      * @Route("/fafaina/{id}", name="kristiana.fafaina", options={"expose" = true})
      */
-    public function delete(Kristiana $kristiana, EntityManagerInterface $manager)
-    {
+    public function delete(Kristiana $kristiana, EntityManagerInterface $manager){
         if (!$this->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirectToRoute('app.login');
         }else{
@@ -195,5 +193,29 @@ class KristianaController extends AbstractController
 
             return new JsonResponse(array('message' => 'success'), Response::HTTP_OK);      
         }
+    }
+
+    /**
+     * @Route("/{id}", name="kristiana.mombamomba")
+     *
+     * @return void
+     */
+    public function kristiana(Kristiana $kristiana, Request $request){
+
+        $page = $request->query->get("page");
+
+        $this->breadcrumbs->prependRouteItem("Fandraisana", "admin.index");
+        $this->breadcrumbs->addItem("Kristiana");
+        if ($page == "tsy-mpandray") {    
+            $this->breadcrumbs->addRouteItem("Lisitry ny tsy mpandray","kristiana.tsy-mpandray");
+        }else{
+            $this->breadcrumbs->addRouteItem("Lisitry ny mpandray","kristiana.mpandray");
+        }
+        $this->breadcrumbs->addItem("Momba ny kristiana");
+
+        return $this->render('admin/kristiana/mombamomba.html.twig',[
+            'title' => 'Momba ny kristiana',
+            'kristiana' => $kristiana
+        ]);
     }
 }
